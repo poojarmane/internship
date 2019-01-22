@@ -1,0 +1,40 @@
+<h2>Login Here...</h2>
+  <div class="form">
+  <form #employeeForm="ngForm" >
+    
+
+    
+
+
+    <div class="form-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <label>Email Id</label>
+          <input class="form-control" name="email" #email="ngModel" 
+          [(ngModel)]="employeeService.email" placeholder="Email Id" required
+          #email="ngModel" pattern="\b[a-z 0-9._%+-]+@[a-z 0-9.-]+\.[a-z]{2,}\b">
+    </div>
+    <div *ngIf="email.errors?.pattern">
+      email is invalid!
+  </div>
+
+    
+    <div class="form-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <label>Password</label>
+        <input class="form-control" name="psw" #psw="ngModel" 
+        [(ngModel)]="employeeService.psw" placeholder="password" 
+        ngModel required minlegth="5" maxlength="10" pattern="[A-Za-z]*[0-9]*">
+    </div>
+    <div *ngIf="psw.errors?.pattern">
+      password is invalid!
+  </div>
+  
+    
+    
+    <button (click)="addUser(email.value,psw.value)" a routerLink="/contact-person"  >Login</button>
+
+    <button  a routerLink="/home">Back</button>
+
+  </form>
+
+  
